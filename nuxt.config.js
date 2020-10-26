@@ -3,6 +3,9 @@ const fetch = require('node-fetch')
 
 export default {
   target: 'static',
+  router: {
+    base: '/nuxt-app/'
+  },
   ssr: true,
   head: {
     title: 'nuxt-app',
