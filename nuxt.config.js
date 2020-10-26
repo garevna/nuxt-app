@@ -2,7 +2,7 @@
 const fetch = require('node-fetch')
 
 export default {
-  // Global page headers (https://go.nuxtjs.dev/config-head)
+  target: 'static',
   ssr: true,
   head: {
     title: 'nuxt-app',
