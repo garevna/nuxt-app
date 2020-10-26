@@ -10,7 +10,13 @@
               </h1>
             </v-card-text>
             <v-card-text class="mx-auto mx-lg-0">
-              <p class="text-center text-md-left" v-html="top.text.split('\n').join('<br>')" />
+              <p
+                v-for="line in textLines"
+                :key="line"
+                class="text-center text-md-left"
+              >
+                {{ line }}
+              </p>
             </v-card-text>
             <v-card-text class="text-center text-md-left">
               <v-btn
@@ -84,8 +90,6 @@ p {
 
 <script>
 
-// import { mapState } from 'vuex'
-
 import TopPicture from '@/components/TopPicture.vue'
 
 export default {
@@ -106,9 +110,11 @@ export default {
       type: String,
       default: undefined
     }
+  },
+  computed: {
+    textLines () {
+      return this.top.text.split('\n')
+    }
   }
-  // data: () => ({
-  //   ...mapState('content', ['top'])
-  // })
 }
 </script>

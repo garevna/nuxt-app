@@ -1,5 +1,9 @@
 <template>
-  <section id="footer" class="homefone" v-mutate="footerMutationHandler">
+  <section
+    id="footer"
+    v-mutate="footerMutationHandler"
+    class="homefone"
+  >
     <div class="base-title">
       <a href="#footer" class="core-goto" />
       <v-row v-if="ready" width="100%">

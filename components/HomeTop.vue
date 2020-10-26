@@ -15,9 +15,12 @@
             </v-card-text>
             <v-card-text class="mx-0">
               <p
+                v-for="line in textLines"
+                :key="line"
                 class="text-center text-md-left"
-                v-html="top.text.split('\n').join('<br>')"
-              />
+              >
+                {{ line }}
+              </p>
             </v-card-text>
           </v-card>
         </v-col>
@@ -97,7 +100,10 @@ export default {
   },
   computed: {
     ...mapState(['viewportWidth']),
-    ...mapState('content', ['top', 'mainNavButtons', 'mainNavSectors'])
+    ...mapState('content', ['top', 'mainNavButtons', 'mainNavSectors']),
+    textLines () {
+      return this.top.text.split('\n')
+    }
   }
 }
 </script>

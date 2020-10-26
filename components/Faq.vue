@@ -1,8 +1,8 @@
 <template>
   <section id="faq" style="width: 100%">
     <div class="base-title">
-      <a href="#faq" class="core-goto"></a>
-      <FAQ :page.sync="section"/>
+      <a href="#faq" class="core-goto" />
+      <FAQ :page.sync="section" />
     </div>
   </section>
 </template>
@@ -10,11 +10,15 @@
 <script>
 
 import 'pineapple-faq'
-// import 'pineapple-faq/dist/pineapple-faq.css'
 
 export default {
   name: 'Faqs',
-  props: ['goto'],
+  props: {
+    goto: {
+      type: String,
+      default: undefined
+    }
+  },
   computed: {
     section: {
       get () {

@@ -14,7 +14,13 @@
           </h2>
         </v-card-title>
         <v-card-text>
-          <p class="text-left" v-html="info.text.split('\n').join('<br>')" />
+          <p
+            v-for="line in textLines"
+            :key="line"
+            class="text-left"
+          >
+            {{ line }}
+          </p>
         </v-card-text>
         <v-card-text>
           <h5
@@ -73,6 +79,11 @@ export default {
     info: {
       type: Object,
       default: () => ({})
+    }
+  },
+  computed: {
+    textLines () {
+      return this.info.text.split('\n')
     }
   }
 }

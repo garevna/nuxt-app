@@ -11,7 +11,12 @@ import 'pineapple-main-nav-bar/dist/pineapple-main-nav-bar.css'
 
 export default {
   name: 'MainMenu',
-  props: ['page'],
+  props: {
+    page: {
+      type: String,
+      default: undefined
+    }
+  },
   computed: {
     goto: {
       get () {
