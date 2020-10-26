@@ -1,0 +1,40 @@
+{
+  "name": "nuxt-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lint": "yarn lint:js"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/pwa": "^3.0.2",
+    "core-js": "^3.6.5",
+    "dotenv": "^8.2.0",
+    "nuxt": "^2.14.6",
+    "nuxt-gmaps": "^1.2.10",
+    "pineapple-contact-form": "^1.2.8",
+    "pineapple-faq": "^1.0.4",
+    "pineapple-footer": "^2.2.5",
+    "pineapple-how-to-connect": "^1.0.7",
+    "pineapple-internet-plans": "^1.1.5",
+    "pineapple-main-nav-bar": "^1.1.4",
+    "pineapple-popup": "^1.0.7",
+    "pineapple-styles": "^1.1.9",
+    "pineapple-system-bar": "^1.0.7",
+    "pineapple-testimonials": "^1.1.0",
+    "vuetify": "^2.3.13"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "^3.1.0",
+    "@nuxtjs/eslint-module": "^2.0.0",
+    "@nuxtjs/vuetify": "^1.11.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.10.0",
+    "eslint-plugin-nuxt": "^1.0.0"
+  }
+}
