@@ -1,11 +1,7 @@
-
 const fetch = require('node-fetch')
 
 export default {
   target: 'static',
-  router: {
-    base: '/nuxt-app/'
-  },
   ssr: true,
   head: {
     title: 'nuxt-app',
@@ -16,10 +12,11 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/nuxt-app/favicon.ico' }
     ]
   },
   router: {
+    base: '/nuxt-app/',
     extendRoutes(routes, resolve) {
       routes.push({
         name: 'page-1',

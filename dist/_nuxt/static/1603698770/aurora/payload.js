@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/aurora", {data:[{}],fetch:[],mutations:[]});
