@@ -9,7 +9,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: 'Lightning Fast Fibre Internet' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/nuxt-app/favicon.ico' }
@@ -21,17 +21,17 @@ export default {
       routes.push({
         name: 'page-1',
         path: '/conservatory',
-        component: resolve(__dirname, 'pages/Page.vue')
+        component: resolve('pages/Page.vue')
       })
       routes.push({
         name: 'page-2',
         path: '/qv1',
-        component: resolve(__dirname, 'pages/Page.vue')
+        component: resolve('pages/Page.vue')
       })
       routes.push({
         name: 'page-3',
         path: '/aurora',
-        component: resolve(__dirname, 'pages/Page.vue')
+        component: resolve('pages/Page.vue')
       })
     }
   },
@@ -112,11 +112,11 @@ export default {
   },
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-    ['nuxt-gmaps', {
-      key: 'AIzaSyBVql75Qc_Y5oGvrxdcNRNMhBlZEzTdk1o',
-      libraries: ['places', 'geometry']
-    }]
+    '@nuxtjs/pwa'
+    // ['nuxt-gmaps', {
+    //   key: 'AIzaSyBVql75Qc_Y5oGvrxdcNRNMhBlZEzTdk1o',
+    //   libraries: ['places', 'geometry']
+    // }]
   ],
   axios: {},
 

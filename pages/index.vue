@@ -57,7 +57,7 @@
 /* eslint-disable no-console */
 
 import { mapState, mapGetters, mapActions } from 'vuex'
-import mapStyles from '@/configs/map.js'
+// import mapStyles from '@/configs/map.js'
 
 import 'pineapple-system-bar'
 import 'pineapple-how-to-connect'
@@ -83,8 +83,8 @@ export default {
   data: () => ({
     main: null,
     page: undefined,
-    goto: undefined,
-    mapStyles
+    goto: undefined
+    // mapStyles
   }),
   computed: {
     ...mapState({
