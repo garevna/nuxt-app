@@ -1,17 +1,16 @@
 <template>
   <section
-    id="footer"
+    id="pineapple-footer"
     v-mutate="footerMutationHandler"
     class="homefone"
   >
     <div class="base-title">
       <a href="#footer" class="core-goto" />
-      <v-row v-if="ready" width="100%">
-        <client-only>
-          <Footer
-            :email-endpoint="mailEndpoint"
-          />
-        </client-only>
+      <v-row width="100%">
+        <Footer
+          v-if="ready"
+          :email-endpoint="mailEndpoint"
+        />
       </v-row>
     </div>
   </section>
@@ -20,7 +19,6 @@
 <script>
 
 import 'pineapple-footer'
-import 'pineapple-footer/dist/pineapple-footer.css'
 
 import { mapState, mapMutations } from 'vuex'
 
@@ -33,26 +31,27 @@ export default {
     }
   },
   data: () => ({
-    footer: null
+    footerElement: null
   }),
   computed: {
     ...mapState({
-      mailEndpoint: state => state.mailEndpoint
+      mailEndpoint: state => state.mailEndpoint,
+      footer: state => state.footer
     }),
     ready () {
-      return !!this.mailEndpoint
+      return !!this.footer
     }
   },
   mounted () {
-    this.footer = document.querySelector('.footer')
+    this.footerElement = document.querySelector('.footer')
   },
   methods: {
     ...mapMutations({
       updateFooterHeight: 'UPDATE_FOOTER_HEIGHT'
     }),
     footerMutationHandler (mutations) {
-      if (this.footer) {
-        this.updateFooterHeight(this.footer.offsetHeight)
+      if (this.footerElement) {
+        this.updateFooterHeight(this.footerElement.offsetHeight)
       }
     }
   }

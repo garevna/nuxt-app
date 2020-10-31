@@ -102,7 +102,11 @@ export default {
     ...mapState(['viewportWidth']),
     ...mapState('content', ['top', 'mainNavButtons', 'mainNavSectors']),
     textLines () {
-      return this.top.text.split('\n')
+      return this.top.text
+        .split('<br>').join('\n')
+        .split('<br/>').join('\n')
+        .split('<br />').join('\n')
+        .split('\n')
     }
   }
 }

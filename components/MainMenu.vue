@@ -1,7 +1,5 @@
 <template>
-  <v-row>
-    <MainNavBar :page.sync="goto" />
-  </v-row>
+  <MainNavBar :page.sync="goto" />
 </template>
 
 <script>

@@ -69,26 +69,28 @@ const actions = {
         propValue: payload.footer
       })
     }
-  },
-
-  async GET_PAGE_CONTENT (context, route) {
-    let content = JSON.parse(localStorage.getItem(route))
-    if (!content || Date.now() - content.modified > 300000) {
-      content = await (await fetch(`${context.getters.contentEndpoint}/${route}`)).json()
-      localStorage.setItem(route, JSON.stringify({
-        modified: Date.now(),
-        ...content
-      }))
-    }
-    if (!content.footer) {
-      context.commit('UPDATE_PROP', {
-        propName: 'footer',
-        propValue: context.rootState.footer
-      })
-    }
-    delete content.modified
-    context.dispatch('UPDATE_ALL', content)
   }
+
+  // async GET_PAGE_CONTENT (context, route) {
+  //   let content = JSON.parse(localStorage.getItem(route))
+  //   if (!content || Date.now() - content.modified > 300000) {
+  //     content = await (await fetch(`${context.getters.contentEndpoint}/${route}`)).json()
+  //     localStorage.setItem(route, JSON.stringify({
+  //       modified: Date.now(),
+  //       ...content
+  //     }))
+  //   }
+  //   if (!content.footer) {
+  //     context.commit('UPDATE_PROP', {
+  //       propName: 'footer',
+  //       propValue: context.rootState.footer
+  //     })
+  //   }
+  //   delete content.modified
+  //   context.dispatch('UPDATE_ALL', content)
+  //
+  //   return context.state
+  // }
 }
 
 export default {

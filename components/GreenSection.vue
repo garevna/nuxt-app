@@ -9,7 +9,7 @@
         <a href="https://dgtek.net" target="_blank">
           <span>Pineapple NET is powered by </span>
           <v-img
-            src="/images/dgtek-logo-white.svg"
+            src="images/dgtek-logo-white.svg"
             class="logo"
             width="50"
             contain

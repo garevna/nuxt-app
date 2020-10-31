@@ -32,7 +32,7 @@
         </v-card-text>
         <v-card-text class="my-12">
           <span class="small text-left">Pineapple NET is powered by</span>
-          <v-img src="/images/dgtek-logo.svg" width="50" class="logo" />
+          <v-img src="images/dgtek-logo.svg" width="50" class="logo" />
         </v-card-text>
       </v-card>
     </div>
@@ -83,7 +83,7 @@ export default {
   },
   computed: {
     textLines () {
-      return this.info.text.split('\n')
+      return this.info && this.info.text ? this.info.text.split('\n') : []
     }
   }
 }

@@ -100,11 +100,7 @@ export default {
   props: {
     top: {
       type: Object,
-      default: () => ({
-        header: 'Lightning Fast Fibre Internet from $49.99/mo',
-        pictureURL: 'https://api.pineapple.net.au/images/family-medium-1.png',
-        text: 'Unlimited Data. No Lock-in Contract. <br><br>Sign up now and as a gift from us, get 1 month of FREE 1000Mbps Internet. Offer available in Melbourne’s CBD highrise apartments: The Aurora, Conservatory and QV1.'
-      })
+      default: () => ({})
     },
     page: {
       type: String,
@@ -113,7 +109,11 @@ export default {
   },
   computed: {
     textLines () {
-      return this.top.text.split('\n')
+      return !this.top || !this.top.text ? []
+        : this.top.text.split('<br>').join('\n')
+          .split('<br/>').join('\n')
+          .split('<br />').join('\n')
+          .split('\n')
     }
   }
 }

@@ -1,4 +1,3 @@
-
 export const state = () => ({
   host: 'https://api.pineapple.net.au',
   generalInfoEndpoint: 'https://api.pineapple.net.au/content/general',
@@ -21,11 +20,9 @@ export const getters = {
 export const mutations = {
   UPDATE_MAIN_CONTENT_HEIGHT: (state, height) => { state.mainContentHeight = height },
   UPDATE_FOOTER_HEIGHT: (state, height) => { state.footerHeight = height },
-  UPDATE_BROWSER_TITLE: (state, title) => { state.browserTabTitle = title },
-  UPDATE_EMAIL_SUBJECT: (state, subject) => { state.emailSubject = subject },
-  UPDATE_EMAIL_TEXT: (state, text) => { state.emailText = text },
-  UPDATE_FOOTER: (state, footer) => {
-    state.footer = Object.assign({}, footer)
+  UPDATE_COMMON_INFO: (state, payload) => {
+    const { browserTabTitle, emailSubject, emailText, footer } = payload
+    Object.assign(state, { browserTabTitle, emailSubject, emailText, footer })
   },
   CHANGE_VIEWPORT: (state) => {
     state.viewportWidth = process.client ? window.innerWidth : 1440
@@ -40,22 +37,31 @@ export const mutations = {
 }
 
 export const actions = {
-  async GET_GENERAL_INFO ({ state, commit }) {
-    let generalInfo = JSON.parse(localStorage.getItem('generalInfo'))
-    if (!generalInfo || Date.now() - generalInfo.modified > 3600000) {
-      generalInfo = await (await fetch(state.generalInfoEndpoint)).json()
-      localStorage.setItem('generalInfo', JSON.stringify({
-        modified: Date.now(),
-        ...generalInfo
-      }))
-    }
-    delete generalInfo.modified
-    for (const field in generalInfo) {
-      commit('SET_PROPERTY', {
-        object: state,
+  UPDATE_GENERAL_INFO: (context, info) => {
+    for (const field in info) {
+      context.commit('SET_PROPERTY', {
+        object: context.state,
         propertyName: field,
-        value: generalInfo[field]
+        value: info[field]
       })
     }
   }
+  // async GET_GENERAL_INFO ({ state, commit }) {
+  //   let generalInfo = JSON.parse(localStorage.getItem('generalInfo'))
+  //   if (!generalInfo || Date.now() - generalInfo.modified > 3600000) {
+  //     generalInfo = await (await fetch(state.generalInfoEndpoint)).json()
+  //     localStorage.setItem('generalInfo', JSON.stringify({
+  //       modified: Date.now(),
+  //       ...generalInfo
+  //     }))
+  //   }
+  //   delete generalInfo.modified
+  //   for (const field in generalInfo) {
+  //     commit('SET_PROPERTY', {
+  //       object: state,
+  //       propertyName: field,
+  //       value: generalInfo[field]
+  //     })
+  //   }
+  // }
 }

@@ -1,16 +1,16 @@
 <template>
   <v-container class="main-container homefone">
     <v-sheet
+      v-if="ready"
       id="main-content"
       class="homefone"
     >
-      <SystemBar />
       <MainMenu :page.sync="page" />
       <!-- ============================= TOP ============================= -->
       <section id="top" style="width: 100%">
         <div class="base-title">
           <a href="#top" class="core-goto" />
-          <HomeTop v-if="ready" :page.sync="page" />
+          <HomeTop :page.sync="page" />
         </div>
       </section>
 
@@ -19,15 +19,16 @@
         <section id="list" style="width: 100%">
           <div class="base-title">
             <a href="#list" class="core-goto" />
-            <List
-              v-if="ready"
-              :list="$store.state.content.list"
-              :page.sync="goto"
-            />
+            <LazyHydrate when-visible>
+              <List
+                :list="$store.state.content.list"
+                :page.sync="goto"
+              />
+            </LazyHydrate>
           </div>
         </section>
       </v-row>
-      <GreenSection v-if="ready" :green-section="greenSection" />
+      <GreenSection />
       <Plans :goto.sync="goto" />
 
       <!-- ============================= HOW TO CONNECT ============================= -->
@@ -35,18 +36,24 @@
         <section id="how-to-connect" class="section">
           <div class="base-title">
             <a href="#how-to-connect" class="core-goto" />
-            <HowToConnect v-if="ready" :page.sync="goto" />
+            <LazyHydrate when-visible>
+              <HowToConnect :page.sync="goto" />
+            </LazyHydrate>
           </div>
         </section>
       </v-row>
       <!-- ============================= TESTIMONIALS ============================= -->
       <v-row width="100%" justify="center">
-        <Reviews v-if="ready" :goto.sync="goto" />
+        <LazyHydrate when-visible>
+          <Reviews :goto.sync="goto" />
+        </LazyHydrate>
       </v-row>
 
       <!-- ============================= FAQ ============================= -->
       <v-row width="100%" justify="center">
-        <Faq v-if="ready" :goto.sync="goto" />
+        <LazyHydrate when-visible>
+          <Faq :goto.sync="goto" />
+        </LazyHydrate>
       </v-row>
     </v-sheet>
   </v-container>
@@ -54,37 +61,40 @@
 
 <script>
 
-/* eslint-disable no-console */
+import LazyHydrate from 'vue-lazy-hydration'
 
-import { mapState, mapGetters, mapActions } from 'vuex'
-// import mapStyles from '@/configs/map.js'
+import { mapState, mapGetters } from 'vuex'
 
-import 'pineapple-system-bar'
 import 'pineapple-how-to-connect'
-
-import MainMenu from '@/components/MainMenu.vue'
-import HomeTop from '@/components/HomeTop.vue'
-import List from '@/components/List.vue'
-import Faq from '@/components/Faq.vue'
-import Plans from '@/components/Plans.vue'
-import GreenSection from '@/components/GreenSection.vue'
-import Reviews from '@/components/Reviews.vue'
 
 export default {
   components: {
-    MainMenu,
-    HomeTop,
-    List,
-    GreenSection,
-    Plans,
-    Reviews,
-    Faq
+    LazyHydrate,
+    MainMenu: () => import('@/components/MainMenu.vue'),
+    HomeTop: () => import('@/components/HomeTop.vue'),
+    List: () => import('@/components/List.vue'),
+    GreenSection: () => import('@/components/GreenSection.vue'),
+    Plans: () => import('@/components/Plans.vue'),
+    Reviews: () => import('@/components/Reviews.vue'),
+    Faq: () => import('@/components/Faq.vue')
+  },
+  async asyncData (context) {
+    const { store } = context
+    const generalInfo = await (
+      await fetch('https://api.pineapple.net.au/content/general')
+    ).json()
+    store.dispatch('UPDATE_GENERAL_INFO', generalInfo)
+    const homePageContent = await (
+      await fetch('https://api.pineapple.net.au/content/2')
+    ).json()
+    store.commit('UPDATE_COMMON_INFO', homePageContent)
+    store.dispatch('content/UPDATE_CONTENT', homePageContent)
+    return { generalInfo, homePageContent }
   },
   data: () => ({
     main: null,
     page: undefined,
     goto: undefined
-    // mapStyles
   }),
   computed: {
     ...mapState({
@@ -93,22 +103,14 @@ export default {
       emailText: state => state.emailText
     }),
     ...mapGetters(['pageHeight']),
-    ...mapState('content', {
-      top: state => state.top,
-      list: state => state.list,
-      greenSection: state => state.greenSection,
-      testimonials: state => state.testimonials,
-      howToConnect: state => state.howToConnect,
-      footer: state => state.footer
-    }),
     ready () {
-      return !!this.top
+      return !!this.$store.state.content.top
     }
   },
   watch: {
     /* Buttons on page */
     goto (val) {
-      if (!val) { return }
+      if (!val || !process.client) { return }
       this.$vuetify.goTo(val, {
         duration: 500,
         offset: 20,
@@ -119,7 +121,7 @@ export default {
 
     /* Buttons of main nav bar */
     page (val) {
-      if (!val) { return }
+      if (!val || !process.client) { return }
 
       /* Inside page transition */
       if (val.indexOf('#') === 0) {
@@ -143,20 +145,6 @@ export default {
       this.$router.push({ name: val })
       this.page = undefined
     }
-  },
-  beforeMount () {
-    // this.getGeneralInfo()
-    // this.getContent(2).then(() => {
-    //   this.ready = true
-    // })
-  },
-  methods: {
-    ...mapActions({
-      getGeneralInfo: 'GET_GENERAL_INFO'
-    }),
-    ...mapActions('content', {
-      getContent: 'GET_PAGE_CONTENT'
-    })
   }
 }
 </script>

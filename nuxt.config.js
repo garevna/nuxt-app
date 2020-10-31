@@ -4,14 +4,18 @@ export default {
   target: 'static',
   ssr: true,
   head: {
-    title: 'nuxt-app',
+    title: 'connect-melbourne-cbd',
     components: true,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'Lightning Fast Fibre Internet' }
     ],
+    script: [
+      // { src: 'https://cdn.jsdelivr.net/npm/progressive-image.js/dist/progressive-image.js' }
+    ],
     link: [
+      // { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/progressive-image.js/dist/progressive-image.css' },
       { rel: 'icon', type: 'image/x-icon', href: '/nuxt-app/favicon.ico' }
     ]
   },
@@ -21,17 +25,31 @@ export default {
       routes.push({
         name: 'page-1',
         path: '/conservatory',
-        component: resolve('pages/Page.vue')
+        component: resolve('./pages/Page.vue'),
+        params: {
+          id: '2-1'
+        }
       })
       routes.push({
         name: 'page-2',
         path: '/qv1',
-        component: resolve('pages/Page.vue')
+        component: resolve('./pages/Page.vue'),
+        params: {
+          id: '2-2'
+        }
       })
       routes.push({
         name: 'page-3',
         path: '/aurora',
-        component: resolve('pages/Page.vue')
+        component: resolve('./pages/Page.vue'),
+        params: {
+          id: '2-3'
+        }
+      })
+      routes.push({
+        name: 'custom',
+        path: '*',
+        component: resolve('pages/NotFound.vue')
       })
     }
   },
@@ -113,14 +131,8 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/pwa'
-    // ['nuxt-gmaps', {
-    //   key: 'AIzaSyBVql75Qc_Y5oGvrxdcNRNMhBlZEzTdk1o',
-    //   libraries: ['places', 'geometry']
-    // }]
   ],
   axios: {},
-
-  // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
   }
 }
