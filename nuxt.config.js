@@ -12,15 +12,14 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Lightning Fast Fibre Internet' }
     ],
     script: [
-      // { src: 'https://cdn.jsdelivr.net/npm/progressive-image.js/dist/progressive-image.js' }
+      //
     ],
     link: [
-      // { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/progressive-image.js/dist/progressive-image.css' },
-      { rel: 'icon', type: 'image/x-icon', href: '/nuxt-app/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }
     ]
   },
   router: {
-    base: '/nuxt-app/',
+    base: '/',
     extendRoutes(routes, resolve) {
       routes.push({
         name: 'page-1',
