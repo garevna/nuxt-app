@@ -1,6 +1,6 @@
 const fetch = require('node-fetch')
 
-export default {
+module.exports = {
   target: 'static',
   ssr: true,
   head: {
