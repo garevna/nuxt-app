@@ -64,15 +64,6 @@ import { mapState } from 'vuex'
 
 import LazyHydrate from 'vue-lazy-hydration'
 
-// import 'pineapple-system-bar'
-
-// import MainMenu from '@/components/MainMenu.vue'
-// import Top from '@/components/Top.vue'
-// import Aside from '@/components/Aside.vue'
-// import UserForm from '@/components/UserForm.vue'
-// import Reviews from '@/components/Reviews.vue'
-// import Faq from '@/components/Faq.vue'
-
 export default {
   name: 'Page',
   components: {

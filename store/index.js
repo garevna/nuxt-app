@@ -46,22 +46,4 @@ export const actions = {
       })
     }
   }
-  // async GET_GENERAL_INFO ({ state, commit }) {
-  //   let generalInfo = JSON.parse(localStorage.getItem('generalInfo'))
-  //   if (!generalInfo || Date.now() - generalInfo.modified > 3600000) {
-  //     generalInfo = await (await fetch(state.generalInfoEndpoint)).json()
-  //     localStorage.setItem('generalInfo', JSON.stringify({
-  //       modified: Date.now(),
-  //       ...generalInfo
-  //     }))
-  //   }
-  //   delete generalInfo.modified
-  //   for (const field in generalInfo) {
-  //     commit('SET_PROPERTY', {
-  //       object: state,
-  //       propertyName: field,
-  //       value: generalInfo[field]
-  //     })
-  //   }
-  // }
 }
