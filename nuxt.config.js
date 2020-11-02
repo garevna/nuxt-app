@@ -129,9 +129,16 @@ module.exports = {
     }
   },
   modules: [
+    'nuxt-webfontloader',
+    'nuxt-material-design-icons',
     '@nuxtjs/axios',
     '@nuxtjs/pwa'
   ],
+  webfontloader: {
+    google: {
+      families: ['Roboto:100,300,400']
+    }
+  },
   axios: {},
   build: {
   }

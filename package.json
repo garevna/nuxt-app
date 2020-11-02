@@ -17,6 +17,8 @@
     "core-js": "^3.6.5",
     "dotenv": "^8.2.0",
     "nuxt": "^2.14.7",
+    "nuxt-material-design-icons": "^1.0.4",
+    "nuxt-webfontloader": "^1.1.0",
     "pineapple-contact-form": "^1.2.9",
     "pineapple-faq": "^1.0.5",
     "pineapple-footer": "^2.2.7",
