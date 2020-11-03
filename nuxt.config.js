@@ -1,7 +1,6 @@
 const fetch = require('node-fetch')
 
 module.exports = {
-  target: 'static',
   ssr: true,
   head: {
     title: 'connect-melbourne-cbd',
