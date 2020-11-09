@@ -15,6 +15,8 @@ import 'pineapple-popup'
 
 import FooterComponent from '@/components/FooterComponent.vue'
 
+// import '@iconify/iconify'
+
 export default {
   components: {
     FooterComponent
@@ -25,10 +27,7 @@ export default {
     footer: null
   }),
   computed: {
-    ...mapState({
-      mainContentHeight: state => state.mainContentHeight,
-      footerHeight: state => state.footerHeight
-    }),
+    ...mapState(['mainContentHeight', 'footerHeight']),
     ready () {
       return !!this.$store.state.footer
     }
@@ -47,6 +46,8 @@ export default {
     this.footer = document.querySelector('.footer')
     window.addEventListener('resize', this.resize.bind(this))
     this.resize()
+    document.body.style.height = '100vh'
+    document.body.style['overflow-y'] = 'auto'
   },
   methods: {
     ...mapMutations({
@@ -54,19 +55,9 @@ export default {
       updateFooterHeight: 'UPDATE_FOOTER_HEIGHT',
       changeViewport: 'CHANGE_VIEWPORT'
     }),
-    // ...mapActions({
-    //   getGeneralInfo: 'GET_GENERAL_INFO'
-    // }),
-    // ...mapActions('content', {
-    //   getContent: 'GET_PAGE_CONTENT'
-    // }),
     mutationHandler (mutations) {
       this.$store.commit('UPDATE_MAIN_CONTENT_HEIGHT', this.layout.offsetHeight)
     },
-    // getData () {
-    //   this.getGeneralInfo()
-    //   this.getContent(2)
-    // },
     resize () {
       this.$store.commit('CHANGE_VIEWPORT')
     }
@@ -77,7 +68,13 @@ export default {
 <style>
 
 html {
-  overflow-y: auto;
+  overflow: hidden!important;
+}
+* {
+  user-select: none;
+}
+*:active {
+  outline: none!important;
 }
 
 #__nuxt {

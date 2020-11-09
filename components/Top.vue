@@ -11,8 +11,8 @@
             </v-card-text>
             <v-card-text class="mx-auto mx-lg-0">
               <p
-                v-for="line in textLines"
-                :key="line"
+                v-for="(line, index) in textLines"
+                :key="index"
                 class="text-center text-md-left"
               >
                 {{ line }}
@@ -63,10 +63,6 @@ p {
 }
 
 @media screen and (max-width: 959px) {
-  /* .top-element {
-    margin-top: 80px;
-    margin-bottom: 48px;
-  } */
   .left-col {
     max-width: 100%!important;
     margin-top: 48px;
@@ -75,8 +71,6 @@ p {
   .right-col {
     margin-top: -60px;
     margin-bottom: -180px;
-    /* display: flex;
-    justify-content: center; */
   }
 }
 

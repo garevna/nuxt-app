@@ -5,6 +5,12 @@ module.exports = {
   head: {
     title: 'connect-melbourne-cbd',
     components: true,
+    pwa: {
+      manifest: {
+        name: 'Fast Fibre Internet',
+        background_color: '#4CAF50'
+      }
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -47,7 +53,7 @@ module.exports = {
       routes.push({
         name: 'custom',
         path: '*',
-        component: resolve('pages/NotFound.vue')
+        component: resolve('./pages/NotFound.vue')
       })
     }
   },
@@ -92,14 +98,10 @@ module.exports = {
     '@nuxtjs/eslint-module'
   ],
   vuetify: {
-    icons: {
-      iconfont: 'mdi',
-      values: {
-        expand: 'mdi-chevron-down',
-        valid: 'mdi-check-bold',
-        invalid: 'mdi-alert-outline',
-        home: 'mdi-home-circle'
-      }
+    treeShake: true,
+    defaultAssets: {
+      font: false,
+      icons: 'mdiSvg'
     },
     theme: {
       themes: {
@@ -130,7 +132,9 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa'
   ],
-  axios: {},
+  axios: {
+    baseURL: 'https://api.pineapple.net.au'
+  },
   build: {
   }
 }

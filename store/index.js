@@ -37,31 +37,13 @@ export const mutations = {
 }
 
 export const actions = {
-  UPDATE_GENERAL_INFO: (context, info) => {
-    for (const field in info) {
+  UPDATE_GENERAL_INFO: (context, payload) => {
+    for (const propertyName in payload) {
       context.commit('SET_PROPERTY', {
         object: context.state,
-        propertyName: field,
-        value: info[field]
+        propertyName,
+        value: payload[propertyName]
       })
     }
   }
-  // async GET_GENERAL_INFO ({ state, commit }) {
-  //   let generalInfo = JSON.parse(localStorage.getItem('generalInfo'))
-  //   if (!generalInfo || Date.now() - generalInfo.modified > 3600000) {
-  //     generalInfo = await (await fetch(state.generalInfoEndpoint)).json()
-  //     localStorage.setItem('generalInfo', JSON.stringify({
-  //       modified: Date.now(),
-  //       ...generalInfo
-  //     }))
-  //   }
-  //   delete generalInfo.modified
-  //   for (const field in generalInfo) {
-  //     commit('SET_PROPERTY', {
-  //       object: state,
-  //       propertyName: field,
-  //       value: generalInfo[field]
-  //     })
-  //   }
-  // }
 }

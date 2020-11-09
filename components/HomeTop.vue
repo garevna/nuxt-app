@@ -1,6 +1,5 @@
 <template>
   <v-container
-    v-if="top"
     fluid
     style="overflow-x: hidden; margin-top: 160px; margin-bottom: 64px;"
   >
@@ -15,8 +14,8 @@
             </v-card-text>
             <v-card-text class="mx-0">
               <p
-                v-for="line in textLines"
-                :key="line"
+                v-for="(line, index) in textLines"
+                :key="index"
                 class="text-center text-md-left"
               >
                 {{ line }}
@@ -26,29 +25,30 @@
         </v-col>
         <v-col cols="12" lg="6" class="mx-auto my-auto">
           <v-card flat max-width="480" min-width="320" class="transparent mx-auto">
-            <v-card-text class="text-left">
-              <v-btn
-                v-for="(btn, index) in mainNavButtons"
-                :key="index"
-                color="buttons"
-                dark
-                rounded
-                height="48"
-                width="100%"
-                class="submit-button text-left px-auto mx-auto my-2"
-                style="text-align: left!important"
-                @click="$emit('update:page', mainNavSectors[index])"
-              >
-                <v-row>
-                  <v-col cols="10">
-                    {{ btn }}
-                  </v-col>
-                  <v-col cols="2">
-                    <v-icon>mdi-arrow-right-bold</v-icon>
-                  </v-col>
-                </v-row>
-              </v-btn>
-            </v-card-text>
+            <v-card
+              v-for="(btn, index) in mainNavButtons"
+              :key="index"
+              color="buttons"
+              dark
+              rounded
+              ripple
+              height="64"
+              width="100%"
+              class="submit-button text-left px-4 py-0 mx-auto my-2"
+              @click="$emit('update:page', mainNavSectors[index])"
+            >
+              <v-row align="center">
+                <v-col cols="10" class="text-left">
+                  {{ btn }}
+                </v-col>
+                <v-col cols="2" class="text-right">
+                  <svg height="24" viewBox="0 0 24 24" width="24">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 8V4l8 8-8 8v-4H4V8z" fill="#fff" />
+                  </svg>
+                </v-col>
+              </v-row>
+            </v-card>
           </v-card>
         </v-col>
       </v-row>
@@ -57,6 +57,11 @@
 </template>
 
 <style>
+
+.iconify {
+  width: 48px;
+  height: 32px;
+}
 .v-image__image .v-image__image--cover {
   transition: all 0.5s!important;
 }

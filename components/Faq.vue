@@ -1,10 +1,5 @@
 <template>
-  <section id="faq" style="width: 100%">
-    <div class="base-title">
-      <a href="#faq" class="core-goto" />
-      <FAQ :page.sync="section" />
-    </div>
-  </section>
+  <FAQ :page.sync="section" />
 </template>
 
 <script>

@@ -23,8 +23,8 @@
       </v-sheet>
 
       <!-- ============================= TESTIMONIALS ============================= -->
-      <v-row align="center" justify="center" class="mx-0 px-0">
-        <LazyHydrate when-visible>
+      <v-row ref="testimonials" align="center" justify="center" class="mx-0 px-0">
+        <LazyHydrate when-idle>
           <Reviews :goto.sync="goto" />
         </LazyHydrate>
       </v-row>
@@ -39,21 +39,23 @@
         class="mx-auto"
       >
         <v-row align="center" class="mx-0 px-0">
-          <v-col cols="12" md="6" class="aside-col">
-            <LazyHydrate when-visible>
+          <v-col ref="benefits" cols="12" md="6" class="aside-col">
+            <LazyHydrate when-idle>
               <Aside :info="info" />
             </LazyHydrate>
           </v-col>
-          <v-col cols="12" md="6" class="mx-0 px-0">
+          <v-col ref="contact" cols="12" md="6" class="mx-0 px-0">
             <v-row align="center" justify="center" class="pa-0 my-12">
-              <LazyHydrate when-visible>
+              <LazyHydrate when-idle>
                 <UserForm />
               </LazyHydrate>
             </v-row>
           </v-col>
         </v-row>
       </v-sheet>
-      <Faq :goto.sync="goto" />
+      <v-row ref="faq" align="center" class="mx-0 px-0">
+        <Faq :goto.sync="goto" />
+      </v-row>
     </v-sheet>
   </v-container>
 </template>
@@ -63,15 +65,6 @@
 import { mapState } from 'vuex'
 
 import LazyHydrate from 'vue-lazy-hydration'
-
-// import 'pineapple-system-bar'
-
-// import MainMenu from '@/components/MainMenu.vue'
-// import Top from '@/components/Top.vue'
-// import Aside from '@/components/Aside.vue'
-// import UserForm from '@/components/UserForm.vue'
-// import Reviews from '@/components/Reviews.vue'
-// import Faq from '@/components/Faq.vue'
 
 export default {
   name: 'Page',
@@ -84,24 +77,17 @@ export default {
     Reviews: () => import('@/components/Reviews.vue'),
     Faq: () => import('@/components/Faq.vue')
   },
-  async asyncData (context) {
-    const { store, route } = context
+  async asyncData ({ store, route, $axios }) {
     if (!store.state.officeEmail) {
-      const general = await (
-        await fetch('https://api.pineapple.net.au/content/general')
-      ).json()
-      store.dispatch('UPDATE_GENERAL_INFO', general)
+      const generalInfo = (await $axios.get('/content/general')).data
+      store.dispatch('UPDATE_GENERAL_INFO', generalInfo)
     }
     if (!store.state.footer) {
-      const homePageContent = await (
-        await fetch('https://api.pineapple.net.au/content/2')
-      ).json()
+      const homePageContent = (await $axios.get('/content/2')).data
       store.commit('UPDATE_COMMON_INFO', homePageContent)
     }
     const path = ['2-1', '2-2', '2-3'][['conservatory', 'qv1', 'aurora'].findIndex(item => item === route.path.slice(1))]
-    const content = await (
-      await fetch(`https://api.pineapple.net.au/content/${path}`)
-    ).json()
+    const content = (await $axios.get(`/content/${path}`)).data
     store.dispatch('content/UPDATE_ALL', content)
     return { content }
   },
@@ -112,7 +98,6 @@ export default {
     }
   },
   computed: {
-    ...mapState(['viewportWidth', 'mailEndpoint', 'browserTabTitle', 'emailSubject', 'emailText', 'mainContentHeight', 'footerHeight']),
     ...mapState('content', ['top', 'testimonials', 'info']),
     ready () {
       return !!this.$store.state.officeEmail && !!this.$store.state.footer
@@ -122,24 +107,11 @@ export default {
     content (val) {
       this.$store.dispatch('content/UPDATE_ALL', val)
     },
-    route (val) {
-      if (process.client) {
-        this.$vuetify.goTo('#top', {
-          duration: 500,
-          offset: 80,
-          easing: 'easeInOutCubic'
-        })
-      }
-    },
 
     /* Buttons on page */
     goto (val) {
       if (!val || !process.client) { return }
-      this.$vuetify.goTo(val, {
-        duration: 500,
-        offset: 20,
-        easing: 'easeInOutCubic'
-      })
+      this.$refs[val.slice(1)].scrollIntoView({ behavior: 'smooth' })
       this.goto = undefined
     },
 
@@ -149,11 +121,12 @@ export default {
 
       /* Inside page transition */
       if (val.indexOf('#') === 0) {
-        this.$vuetify.goTo(val, {
-          duration: 500,
-          offset: 50,
-          easing: 'easeInOutCubic'
-        })
+        this.$refs[val.slice(1)].scrollIntoView({ behavior: 'smooth' })
+        // this.$vuetify.goTo(val, {
+        //   duration: 500,
+        //   offset: 50,
+        //   easing: 'easeInOutCubic'
+        // })
         this.page = undefined
         return
       }
@@ -172,15 +145,6 @@ export default {
   },
   mounted () {
     this.page = undefined
-  },
-  beforeRouteLeave (to, from, next) {
-    if (!process.client) { return }
-    this.$vuetify.goTo('#top', {
-      duration: 500,
-      offset: 20,
-      easing: 'easeInOutCubic'
-    })
-    next()
   }
 }
 </script>

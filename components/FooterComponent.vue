@@ -4,15 +4,10 @@
     v-mutate="footerMutationHandler"
     class="homefone"
   >
-    <div class="base-title">
-      <a href="#footer" class="core-goto" />
-      <v-row width="100%">
-        <Footer
-          v-if="ready"
-          :email-endpoint="mailEndpoint"
-        />
-      </v-row>
-    </div>
+    <Footer
+      v-if="ready"
+      :email-endpoint="mailEndpoint"
+    />
   </section>
 </template>
 

@@ -1,13 +1,7 @@
 <template>
-  <section id="testimonials" class="section">
-    <div class="base-title">
-      <a href="#testimonials" class="core-goto" />
-      <Testimonials
-        v-if="ready"
-        :page.sync="section"
-      />
-    </div>
-  </section>
+  <Testimonials
+    :page.sync="section"
+  />
 </template>
 
 <script>

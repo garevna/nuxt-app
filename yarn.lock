@@ -992,6 +992,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@iconify/iconify@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@iconify/iconify/-/iconify-1.0.7.tgz#22e6d384482995738746eeb38b9b76588df41d57"
+  integrity sha512-qCbH1V/Ceg302lrgBiiXCZAyqMAq8KqsHYokCpUvgBH6yYfAmvlSkEEBrmJdHofQvfY/+xaeQcsOOTjW7JakNw==
+
 "@nodelib/fs.scandir@2.1.3":
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.3.tgz#3a582bdb53804c6ba6d146579c46e52130cf4a3b"
@@ -1155,19 +1160,6 @@
     fs-extra "^8.1.0"
     html-minifier "^4.0.0"
     node-html-parser "^1.3.1"
-
-"@nuxt/http@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@nuxt/http/-/http-0.6.0.tgz#7f6f7592cfd95f57fc9f992314efd118f7f115f1"
-  integrity sha512-p564xyaGW57YQ7Xj3DYnWvOus/HCD8rcvFQMpCUqzcIIIM6fFF6crgMwSpPlpqrxglJA6+PvXv8hnG41k3DSVQ==
-  dependencies:
-    "@nuxtjs/proxy" "^2.0.1"
-    abort-controller "^3.0.0"
-    consola "^2.15.0"
-    destr "^1.0.0"
-    ky "^0.24.0"
-    node-fetch "^2.6.1"
-    web-streams-polyfill "^3.0.0"
 
 "@nuxt/loading-screen@^2.0.2":
   version "2.0.2"
@@ -1749,13 +1741,6 @@
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
-
-abort-controller@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/abort-controller/-/abort-controller-3.0.0.tgz#eaf54d53b62bae4138e809ca225c8439a6efb392"
-  integrity sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==
-  dependencies:
-    event-target-shim "^5.0.0"
 
 accepts@~1.3.5, accepts@~1.3.7:
   version "1.3.7"
@@ -3569,11 +3554,6 @@ es6-object-assign@^1.1.0:
   resolved "https://registry.yarnpkg.com/es6-object-assign/-/es6-object-assign-1.1.0.tgz#c2c3582656247c39ea107cb1e6652b6f9f24523c"
   integrity sha1-wsNYJlYkfDnqEHyx5mUrb58kUjw=
 
-es6-promise@^4.0.5:
-  version "4.2.8"
-  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.2.8.tgz#4eb21594c972bc40553d276e510539143db53e0a"
-  integrity sha512-HJDGx5daxeIvxdBxvG2cb9g4tEvwIk3i8+nhX0yGrYmZUzbkdg8QbDevheDB8gd0//uPj4c1EQua8Q+MViT0/w==
-
 escalade@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/escalade/-/escalade-3.1.0.tgz#e8e2d7c7a8b76f6ee64c2181d6b8151441602d4e"
@@ -3869,11 +3849,6 @@ etag@^1.8.1, etag@~1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
-
-event-target-shim@^5.0.0:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/event-target-shim/-/event-target-shim-5.0.1.tgz#5d4d3ebdf9583d63a5333ce2deb7480ab2b05789"
-  integrity sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==
 
 eventemitter3@^4.0.0:
   version "4.0.7"
@@ -4415,13 +4390,6 @@ globby@^11.0.1:
     ignore "^5.1.4"
     merge2 "^1.3.0"
     slash "^3.0.0"
-
-google-maps-api-loader@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/google-maps-api-loader/-/google-maps-api-loader-1.1.1.tgz#b600602451300521ba1b5d7493e7071d7931ac00"
-  integrity sha512-+bxumYl6WCxKDjygLFF2FxrNyKIB0QgWKFb+EZ6F5wt/MoU2cm/8se9uQ0o1nY7389F2qe6ocdpSFn1bKQAD5w==
-  dependencies:
-    es6-promise "^4.0.5"
 
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.2:
   version "4.2.4"
@@ -5274,11 +5242,6 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
 
-ky@^0.24.0:
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/ky/-/ky-0.24.0.tgz#337e534a7f47c12476988eef3cb968daef318349"
-  integrity sha512-/vpuQguwV30jErrqLpoaU/YJAFALrUkqqWLILnSoBOj5/O/LKzro/pPNtxbLgY6m4w5XNM6YZ3v7/or8qLlFuw==
-
 last-call-webpack-plugin@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/last-call-webpack-plugin/-/last-call-webpack-plugin-3.0.0.tgz#9742df0e10e3cf46e5c0381c2de90d3a7a2d7555"
@@ -5833,11 +5796,6 @@ node-html-parser@^1.3.1:
   dependencies:
     he "1.2.0"
 
-node-js-marker-clusterer@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/node-js-marker-clusterer/-/node-js-marker-clusterer-1.0.0.tgz#d09a1e963ebc5f6c162ece8510e9e680bba097a9"
-  integrity sha1-0Joelj68X2wWLs6FEOnmgLugl6k=
-
 node-libs-browser@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/node-libs-browser/-/node-libs-browser-2.2.1.tgz#b64f513d18338625f90346d27b0d235e631f6425"
@@ -5948,14 +5906,6 @@ num2fraction@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
-
-nuxt-gmaps@^1.2.10:
-  version "1.2.10"
-  resolved "https://registry.yarnpkg.com/nuxt-gmaps/-/nuxt-gmaps-1.2.10.tgz#c32aca891e63eb227835e9f1c2edfa3bf86c0ca6"
-  integrity sha512-IeYXeR6cJpVfSDa0+IYht7r7IZNCL5uK6oWH8e1JY95+NbJBBH6Nas9BmR+9ZIkCw6aFrUwXEkOFgg8RefjlJw==
-  dependencies:
-    google-maps-api-loader "^1.1.1"
-    node-js-marker-clusterer "^1.0.0"
 
 nuxt@^2.14.7:
   version "2.14.7"
@@ -6386,21 +6336,17 @@ pineapple-contact-form@^1.2.8:
     vuetify "^2.2.11"
     vuex "^3.4.0"
 
-pineapple-faq@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/pineapple-faq/-/pineapple-faq-1.0.4.tgz#10cfae18b407b528629bcb476401c06d8447f8ac"
-  integrity sha512-nMrLiZukfpk8jy9D9qqq+RE8wZfAksovNyJfU+zrCLOavR+pkcDGkb1NQ/r6jb5SDunpn2tUONZ3fZ3nc/55mQ==
+pineapple-faq@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/pineapple-faq/-/pineapple-faq-1.0.8.tgz#9c83a604fb36bb421d093775925e1b867766e91d"
+  integrity sha512-qPUbFM+DiL6SBlotjVb97VyiNcgrc36lSfUsPyTlP932cCTWAeTQIw/MScgB7mMSv1/z/BeNHGkMugR9Cor5Dg==
   dependencies:
-    core-js "^3.6.5"
-    pineapple-footer "^2.2.5"
-    pineapple-popup "^1.0.7"
     pineapple-styles "^1.1.9"
-    pineapple-system-bar "^1.0.7"
     vue "^2.6.11"
     vuetify "^2.2.11"
     vuex "^3.4.0"
 
-pineapple-footer@^2.1.4, pineapple-footer@^2.2.5:
+pineapple-footer@^2.1.4:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/pineapple-footer/-/pineapple-footer-2.2.5.tgz#ddd654cfd3045630899f9bdaf15c3ef648959eed"
   integrity sha512-EIcFjE1w6se9UtlcKH+PIL8uSxDMbkhh/l2TKBo1TvN4pZeouFzv7JWKBJBPSVD2Yx0aBbNCNw/LlLSxWX2RGw==
@@ -6413,16 +6359,15 @@ pineapple-footer@^2.1.4, pineapple-footer@^2.2.5:
     vuetify "^2.2.11"
     vuex "^3.4.0"
 
-pineapple-footer@^2.2.7:
-  version "2.2.7"
-  resolved "https://registry.yarnpkg.com/pineapple-footer/-/pineapple-footer-2.2.7.tgz#b94ef45c81c478ce66da9165d7f5d21f8d6c4000"
-  integrity sha512-inFulecY/Xy+8N1iDS1gM9oaAYTUQx6XhBz0tR7xASpMN8EdzDsQLOiEQMz+/Bs5g9o1F7GaDmxOaH0B0dCHtw==
+pineapple-footer@^2.2.9:
+  version "2.2.9"
+  resolved "https://registry.yarnpkg.com/pineapple-footer/-/pineapple-footer-2.2.9.tgz#a3a6f43bf990131b259b9edc63270eaac2d05988"
+  integrity sha512-QHCsTpwX1u6P7OLw2uTfEHqNuz5uf/bKQdrxUOLxJ/ox28tlYT3QMOp43hT+QnYTfn2WudCjALdLvhOUBHFCJw==
   dependencies:
     core-js "^3.6.5"
-    pineapple-popup "^1.0.7"
+    pineapple-popup "^1.1.0"
     pineapple-styles "^1.1.9"
     vue "^2.6.11"
-    vue-router "^3.3.4"
     vuetify "^2.2.11"
     vuex "^3.4.0"
 
@@ -6471,6 +6416,28 @@ pineapple-popup@^1.0.7:
     vuetify "^2.2.11"
     vuex "^3.4.0"
 
+pineapple-popup@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/pineapple-popup/-/pineapple-popup-1.1.0.tgz#0178ffa6a1223c43d8f0d0b59320e3562d1bafc2"
+  integrity sha512-CXR3SOYcn/GYCg5UGSCHCRB0K0kEc1hOcenzxQ9sLhA1w26WoJJK5Z735ycruwTt2O5NQt0ZlaGgvrXLhdeSzg==
+  dependencies:
+    "@iconify/iconify" "^1.0.7"
+    core-js "^3.6.5"
+    pineapple-styles "^1.1.9"
+    vue "^2.6.11"
+    vuetify "^2.2.11"
+    vuex "^3.4.0"
+
+pineapple-popup@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/pineapple-popup/-/pineapple-popup-1.1.1.tgz#26ad2f2eeb02b708c9c3772d31a55627ba247830"
+  integrity sha512-VNebYJJxvgTJw/IoXmxv8miOLymhPA49lVYZZkFgIqI23xJrhPHI+L5KIE5G4g8mJQSPzeowmfEJS1qbdQCwHw==
+  dependencies:
+    pineapple-styles "^1.1.9"
+    vue "^2.6.11"
+    vuetify "^2.2.11"
+    vuex "^3.4.0"
+
 pineapple-styles@^1.1.0, pineapple-styles@^1.1.5, pineapple-styles@^1.1.9:
   version "1.1.9"
   resolved "https://registry.yarnpkg.com/pineapple-styles/-/pineapple-styles-1.1.9.tgz#b063c6866a201c98795bb0ee1fb46341c4b0e02a"
@@ -6484,6 +6451,17 @@ pineapple-system-bar@^1.0.7:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/pineapple-system-bar/-/pineapple-system-bar-1.0.7.tgz#c587b49564ce76674f3f9d85c04d0373b8fdf60c"
   integrity sha512-UkpJMUZUnz73+v1rdlXeCGmGWNkgR2jOzrqzeb/DFCo78L+9ypOg0rDkQ1/2pU92YjbivYWY0JMdmu1BM6RP8w==
+  dependencies:
+    core-js "^3.6.5"
+    pineapple-styles "^1.1.0"
+    vue "^2.6.11"
+    vuetify "^2.2.11"
+    vuex "^3.5.1"
+
+pineapple-system-bar@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/pineapple-system-bar/-/pineapple-system-bar-1.0.9.tgz#f7d851d942aa4d869a4de93f7e5934e267948032"
+  integrity sha512-YOnR6agLgKr92ShelOXce47zLLZ26j1ivJmLDjMfmYrMilCm/+V8AmRe3/27Q9oULNN2uDb992H33YZvxXbcsA==
   dependencies:
     core-js "^3.6.5"
     pineapple-styles "^1.1.0"
@@ -8883,7 +8861,7 @@ vuetify-loader@^1.4.3:
     file-loader "^4.0.0"
     loader-utils "^1.2.0"
 
-vuetify@^2, vuetify@^2.2.11, vuetify@^2.3.13:
+vuetify@^2, vuetify@^2.2.11:
   version "2.3.13"
   resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.3.13.tgz#afd5e00a1fe6a5207d3ee7f06f0bf3741b4f5f68"
   integrity sha512-1908+xtI329/L1MNdZ7DQ16u/HDOq7gNxSYREdQhzCKNWUymdkaFYaBY9kKPQd1JTwT+xQL7GKCH/fr9xrS1AA==
@@ -8910,11 +8888,6 @@ watchpack@^1.7.4:
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.0"
-
-web-streams-polyfill@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.0.0.tgz#c8bcb1e2ec1820088ca201674486a0f1feae848b"
-  integrity sha512-tcZlIJ+VBxuDXdRFF3PCZTJ3yUISGklG4hkl3CDGOlZ8XwpN90L5YsJNoSPH72wZ4nbsatE/OfIaxfM3p+6W7w==
 
 webpack-bundle-analyzer@^3.9.0:
   version "3.9.0"

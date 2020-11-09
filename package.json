@@ -1,7 +1,12 @@
 {
   "name": "nuxt-app",
+  "description": "Multipage landing page for pineapple.net.au",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "12.x",
+    "yarn": "1.x"
+  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -18,17 +23,16 @@
     "dotenv": "^8.2.0",
     "nuxt": "^2.14.7",
     "pineapple-contact-form": "^1.2.8",
-    "pineapple-faq": "^1.0.4",
-    "pineapple-footer": "^2.2.7",
+    "pineapple-faq": "^1.0.8",
+    "pineapple-footer": "^2.2.9",
     "pineapple-how-to-connect": "^1.0.7",
     "pineapple-internet-plans": "^1.1.5",
     "pineapple-main-nav-bar": "^1.1.5",
-    "pineapple-popup": "^1.0.7",
+    "pineapple-popup": "^1.1.1",
     "pineapple-styles": "^1.1.9",
-    "pineapple-system-bar": "^1.0.7",
+    "pineapple-system-bar": "^1.0.9",
     "pineapple-testimonials": "^1.1.0",
-    "vue-lazy-hydration": "^1.0.0-beta.14",
-    "vuetify": "^2.3.13"
+    "vue-lazy-hydration": "^1.0.0-beta.14"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",
