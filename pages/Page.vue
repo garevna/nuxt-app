@@ -5,8 +5,7 @@
       id="main-content"
       class="homefone"
     >
-      <!-- <SystemBar /> -->
-      <MainMenu :page.sync="page" />
+      <MainNavBar :page.sync="page" />
       <v-sheet
         width="100%"
         max-width="1440"
@@ -25,7 +24,7 @@
       <!-- ============================= TESTIMONIALS ============================= -->
       <v-row ref="testimonials" align="center" justify="center" class="mx-0 px-0">
         <LazyHydrate when-idle>
-          <Reviews :goto.sync="goto" />
+          <Testimonials :page.sync="goto" />
         </LazyHydrate>
       </v-row>
 
@@ -47,14 +46,20 @@
           <v-col ref="contact" cols="12" md="6" class="mx-0 px-0">
             <v-row align="center" justify="center" class="pa-0 my-12">
               <LazyHydrate when-idle>
-                <UserForm />
+                <UserContact
+                  v-if="userForm"
+                  :user-form="userForm"
+                  :email-subject="emailSubject"
+                  :email-text="emailText"
+                  :email-endpoint="mailEndpoint"
+                />
               </LazyHydrate>
             </v-row>
           </v-col>
         </v-row>
       </v-sheet>
       <v-row ref="faq" align="center" class="mx-0 px-0">
-        <Faq :goto.sync="goto" />
+        <FAQ :page.sync="goto" />
       </v-row>
     </v-sheet>
   </v-container>
@@ -66,16 +71,17 @@ import { mapState } from 'vuex'
 
 import LazyHydrate from 'vue-lazy-hydration'
 
+import 'pineapple-main-nav-bar'
+import 'pineapple-contact-form'
+import 'pineapple-testimonials'
+import 'pineapple-faq'
+
 export default {
   name: 'Page',
   components: {
     LazyHydrate,
-    MainMenu: () => import('@/components/MainMenu.vue'),
     Top: () => import('@/components/Top.vue'),
-    Aside: () => import('@/components/Aside.vue'),
-    UserForm: () => import('@/components/UserForm.vue'),
-    Reviews: () => import('@/components/Reviews.vue'),
-    Faq: () => import('@/components/Faq.vue')
+    Aside: () => import('@/components/Aside.vue')
   },
   async asyncData ({ store, route, $axios }) {
     if (!store.state.officeEmail) {
@@ -99,6 +105,14 @@ export default {
   },
   computed: {
     ...mapState('content', ['top', 'testimonials', 'info']),
+    ...mapState({
+      mailEndpoint: state => state.mailEndpoint,
+      emailSubject: state => state.emailSubject,
+      emailText: state => state.emailText
+    }),
+    ...mapState('content', {
+      userForm: state => state.userForm
+    }),
     ready () {
       return !!this.$store.state.officeEmail && !!this.$store.state.footer
     }
@@ -122,11 +136,6 @@ export default {
       /* Inside page transition */
       if (val.indexOf('#') === 0) {
         this.$refs[val.slice(1)].scrollIntoView({ behavior: 'smooth' })
-        // this.$vuetify.goTo(val, {
-        //   duration: 500,
-        //   offset: 50,
-        //   easing: 'easeInOutCubic'
-        // })
         this.page = undefined
         return
       }

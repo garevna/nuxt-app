@@ -5,7 +5,7 @@
       id="main-content"
       class="homefone"
     >
-      <MainMenu :page.sync="page" />
+      <MainNavBar :page.sync="page" />
       <!-- ============================= TOP ============================= -->
       <v-row ref="top" width="100%" justify="center">
         <HomeTop :page.sync="page" />
@@ -30,7 +30,7 @@
       <!-- ============================= INTERNET PLANS ============================= -->
       <v-row ref="plans" width="100%" justify="center">
         <LazyHydrate when-idle>
-          <Plans :goto.sync="goto" />
+          <InternetPlans :page.sync="goto" />
         </LazyHydrate>
       </v-row>
 
@@ -43,14 +43,14 @@
       <!-- ============================= TESTIMONIALS ============================= -->
       <v-row ref="testimonials" width="100%" justify="center">
         <LazyHydrate when-idle>
-          <Reviews :goto.sync="goto" />
+          <Testimonials :page.sync="goto" />
         </LazyHydrate>
       </v-row>
 
       <!-- ============================= FAQ ============================= -->
       <v-row ref="faq" width="100%" justify="center">
         <LazyHydrate when-idle>
-          <Faq :goto.sync="goto" />
+          <FAQ :page.sync="goto" />
         </LazyHydrate>
       </v-row>
     </v-sheet>
@@ -63,18 +63,18 @@ import LazyHydrate from 'vue-lazy-hydration'
 
 import { mapState, mapGetters } from 'vuex'
 
+import 'pineapple-main-nav-bar'
 import 'pineapple-how-to-connect'
+import 'pineapple-internet-plans'
+import 'pineapple-testimonials'
+import 'pineapple-faq'
 
 export default {
   components: {
     LazyHydrate,
-    MainMenu: () => import('@/components/MainMenu.vue'),
     HomeTop: () => import('@/components/HomeTop.vue'),
     List: () => import('@/components/List.vue'),
-    GreenSection: () => import('@/components/GreenSection.vue'),
-    Plans: () => import('@/components/Plans.vue'),
-    Reviews: () => import('@/components/Reviews.vue'),
-    Faq: () => import('@/components/Faq.vue')
+    GreenSection: () => import('@/components/GreenSection.vue')
   },
   async asyncData ({ store, $axios }) {
     const generalInfo = (await $axios.get('/content/general')).data

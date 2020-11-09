@@ -68,7 +68,8 @@ module.exports = {
     'pineapple-faq/dist/pineapple-faq.css',
     'pineapple-internet-plans/dist/pineapple-internet-plans.css',
     'pineapple-testimonials/dist/pineapple-testimonials.css',
-    'pineapple-how-to-connect/dist/pineapple-how-to-connect.css'
+    'pineapple-how-to-connect/dist/pineapple-how-to-connect.css',
+    'pineapple-contact-form/dist/pineapple-contact-form.css'
   ],
   script: [
     {
