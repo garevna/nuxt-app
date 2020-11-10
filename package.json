@@ -19,10 +19,9 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/pwa": "^3.0.2",
-    "core-js": "^3.6.5",
     "dotenv": "^8.2.0",
     "nuxt": "^2.14.7",
-    "pineapple-contact-form": "^1.2.8",
+    "pineapple-contact-form": "^1.3.0",
     "pineapple-faq": "^1.0.8",
     "pineapple-footer": "^2.2.9",
     "pineapple-how-to-connect": "^1.0.7",

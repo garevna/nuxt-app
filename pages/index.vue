@@ -105,8 +105,10 @@ export default {
     /* Buttons on page */
     goto (val) {
       if (!val || !process.client) { return }
-      val = val === '#contact' ? '#top' : val
-      this.$refs[val.slice(1)].scrollIntoView({ behavior: 'smooth' })
+      const target = val === '#contact' ? '#top' : val
+      const elem = target === '#footer' ? document.getElementById('pineapple-footer') : this.$refs[target.slice(1)]
+      if (elem.nodeType !== 1) { return }
+      elem.scrollIntoView({ behavior: 'smooth' })
       this.goto = undefined
     },
 
@@ -116,7 +118,8 @@ export default {
 
       /* Inside page transition */
       if (val.indexOf('#') === 0) {
-        this.$refs[val.slice(1)].scrollIntoView({ behavior: 'smooth' })
+        const elem = val === '#footer' ? document.getElementById('pineapple-footer') : this.$refs[val.slice(1)]
+        elem.scrollIntoView({ behavior: 'smooth' })
         this.page = undefined
         return
       }

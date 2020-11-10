@@ -2,7 +2,16 @@
   <v-app>
     <SystemBar />
     <Nuxt v-mutate="mutationHandler" />
-    <FooterComponent v-if="ready" />
+    <section
+      id="pineapple-footer"
+      v-mutate="footerMutationHandler"
+      class="homefone"
+    >
+      <Footer
+        v-if="ready"
+        :email-endpoint="mailEndpoint"
+      />
+    </section>
   </v-app>
 </template>
 
@@ -12,15 +21,9 @@ import { mapState, mapMutations } from 'vuex'
 
 import 'pineapple-system-bar'
 import 'pineapple-popup'
-
-import FooterComponent from '@/components/FooterComponent.vue'
-
-// import '@iconify/iconify'
+import 'pineapple-footer'
 
 export default {
-  components: {
-    FooterComponent
-  },
   data: () => ({
     nuxt: null,
     layout: null,
@@ -28,6 +31,9 @@ export default {
   }),
   computed: {
     ...mapState(['mainContentHeight', 'footerHeight']),
+    ...mapState({
+      mailEndpoint: state => state.mailEndpoint
+    }),
     ready () {
       return !!this.$store.state.footer
     }
@@ -57,6 +63,11 @@ export default {
     }),
     mutationHandler (mutations) {
       this.$store.commit('UPDATE_MAIN_CONTENT_HEIGHT', this.layout.offsetHeight)
+    },
+    footerMutationHandler (mutations) {
+      if (this.footer) {
+        this.updateFooterHeight(this.footer.offsetHeight)
+      }
     },
     resize () {
       this.$store.commit('CHANGE_VIEWPORT')
