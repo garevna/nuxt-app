@@ -103,11 +103,7 @@ export default {
   },
   computed: {
     textLines () {
-      return !this.top || !this.top.text ? []
-        : this.top.text.split('<br>').join('\n')
-          .split('<br/>').join('\n')
-          .split('<br />').join('\n')
-          .split('\n')
+      return !this.top || !this.top.text ? [] : this.top.text.split(/<br[ /]*>/g).join('\n').split('\n')
     }
   }
 }

@@ -72,26 +72,6 @@ module.exports = {
     'pineapple-contact-form/dist/pineapple-contact-form.css'
   ],
   script: [
-    {
-      src: 'pineapple-footer',
-      type: 'text/javascript'
-    },
-    {
-      src: 'pineapple-faq',
-      type: 'text/javascript'
-    },
-    {
-      src: 'pineapple-main-nav-bar',
-      type: 'text/javascript'
-    },
-    {
-      src: 'pineapple-internet-plans',
-      type: 'text/javascript'
-    },
-    {
-      src: 'pineapple-testimonials',
-      type: 'text/javascript'
-    }
   ],
   components: true,
   buildModules: [

@@ -107,7 +107,7 @@ export default {
       if (!val || !process.client) { return }
       const target = val === '#contact' ? '#top' : val
       const elem = target === '#footer' ? document.getElementById('pineapple-footer') : this.$refs[target.slice(1)]
-      if (elem.nodeType !== 1) { return }
+      if (!elem || elem.nodeType !== 1) { return }
       elem.scrollIntoView({ behavior: 'smooth' })
       this.goto = undefined
     },

@@ -8,7 +8,6 @@
       class="homefone"
     >
       <Footer
-        v-if="ready"
         :email-endpoint="mailEndpoint"
       />
     </section>
